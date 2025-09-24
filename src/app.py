@@ -122,23 +122,23 @@ def main():
         
         graph = get_graph()
         
-        try:
-            logger.info("Invoking LangGraph with the current state.")
-            # Pass the initial state to the graph
-            response = graph.invoke(initial_state) #type: ignore
+    try:
+        logger.info("Invoking LangGraph with the current state.")
+        # Pass the initial state to the graph
+        response = graph.invoke(initial_state) #type: ignore
 
-            # The last message object from the response is already a LangChain object
-            final_message_obj = response["messages"][-1]
-            
-            # Append the full LangChain message object to the session state
-            st.session_state.messages.append(final_message_obj.content)
-            
-            logger.info(f"LangGraph execution complete. Response received.")
-        except Exception as e:
-            logger.error(f"An error occurred during graph invocation: {e}")
-            st.session_state.messages.append(
-                AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
-            )
+        # The last message object from the response is already a LangChain object
+        final_message_obj = response["messages"][-1]
+
+        # Append the full LangChain message object to the session state
+        st.session_state.messages.append(final_message_obj)
+
+        logger.info(f"LangGraph execution complete. Response received.")
+    except Exception as e:
+        logger.error(f"An error occurred during graph invocation: {e}")
+        st.session_state.messages.append(
+            AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
+        )
 
 if __name__ == "__main__":
     main()
