@@ -53,35 +53,33 @@ def setup_ui():
     # (The rest of your setup_ui function remains the same)
 
 def render_messages(container):
-    # Logging messages within this loop could be too verbose
-    # We will log the start of the render process instead
     with container:
         st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
         for msg in st.session_state.messages:
+            # Correctly handle LangChain objects using isinstance() and .content
             role = "assistant" if isinstance(msg, AIMessage) else "user"
             content = msg.content
             if role == "assistant":
                 st.markdown(f"<div class='chat-line bot'><div class='avatar'>🌱</div>"
                             f"<div class='chat-bubble bot'>{content}</div></div>",
-                            unsafe_allow_html=True,)
+                            unsafe_allow_html=True)
             else:
                 st.markdown(f"<div class='chat-line user'><div class='chat-bubble user'>{content}</div>"
                             f"<div class='avatar'>👩‍🌾</div></div>",
-                            unsafe_allow_html=True,)
-                st.markdown("</div>", unsafe_allow_html=True)
+                            unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 def main():
     logger.info("Application starting...")
     setup_ui()
     st.markdown("<h2 style='text-align:center;color:#2d6a4f;'>🌾 Terra AI: Your Agricultural Assistant</h2>", unsafe_allow_html=True)
     if "messages" not in st.session_state:
-         # Use an AIMessage object for the initial message
+        # Initialize the session state with a LangChain AIMessage object
         st.session_state.messages = cast(List[BaseMessage], [
-        AIMessage(content="Hello! I'm Terra 🌱. I'm here to help with your farming questions.")
+            AIMessage(content="Hello! I'm Terra 🌱. I'm here to help with your farming questions.")
         ])
-        logger.info("Session initialized with welcome message.")
-        logger.info("Session initialized with welcome message.")
-
+        logger.info("Session initialized with a LangChain message object.")
+        
     if "retrieval_chain" not in st.session_state:
         st.session_state.retrieval_chain = setup_rag_system()
         logger.info("RAG system initialized and stored in session state.")
@@ -113,8 +111,10 @@ def main():
         with st.spinner("Thinking... 🌾"):
             time.sleep(1) 
         
+        # Append the new message as a LangChain HumanMessage object
         st.session_state.messages.append(HumanMessage(content=prompt))
         
+        # Prepare the state dictionary
         initial_state = {
             "messages": st.session_state.messages,
             "rag_chain": st.session_state.retrieval_chain 
@@ -124,23 +124,21 @@ def main():
         
         try:
             logger.info("Invoking LangGraph with the current state.")
-            initial_state_copy = initial_state.copy()
+            # Pass the initial state to the graph
+            response = graph.invoke(initial_state) #type: ignore
 
-            state_input = State(**initial_state_copy)
-            response = graph.invoke(state_input)
-
-            last_message_obj = response["messages"][-1]
-            answer = last_message_obj.content
-            st.session_state.messages.append(
-                last_message_obj
-            )
+            # The last message object from the response is already a LangChain object
+            final_message_obj = response["messages"][-1]
+            
+            # Append the full LangChain message object to the session state
+            st.session_state.messages.append(final_message_obj.content)
+            
             logger.info(f"LangGraph execution complete. Response received.")
         except Exception as e:
             logger.error(f"An error occurred during graph invocation: {e}")
             st.session_state.messages.append(
                 AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
             )
-    render_messages(chat_container)
 
 if __name__ == "__main__":
     main()
