@@ -121,12 +121,15 @@ def main():
         
         try:
             logger.info("Invoking LangGraph with the current state.")
-            state_input = State(**initial_state)
+            initial_state_copy = initial_state.copy()
+
+            state_input = State(**initial_state_copy)
             response = graph.invoke(state_input)
+
             last_message_obj = response["messages"][-1]
             answer = last_message_obj.content
             st.session_state.messages.append(
-                {"role": "assistant", "content": answer}
+                last_message_obj
             )
             logger.info(f"LangGraph execution complete. Response received.")
         except Exception as e:
