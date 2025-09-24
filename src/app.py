@@ -136,6 +136,6 @@ def main():
             st.session_state.messages.append(
                 AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
             )
-
+    render_messages(chat_container)
 if __name__ == "__main__":
     main()
