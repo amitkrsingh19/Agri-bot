@@ -1,0 +1,203 @@
+[2025-09-24 01:04:41] 72  logger - INFO - Application starting...
+[2025-09-24 01:04:42] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 01:04:42] 80  logger - INFO - Session initialized with welcome message.
+[2025-09-24 01:04:42] 9  logger - INFO - Attempting to set up RAG system...
+[2025-09-24 01:04:42] 65  logger - INFO - text splitted using tiktoken
+[2025-09-24 01:04:48] 32  tensorflow - DEBUG - Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+[2025-09-24 01:04:48] 47  h5py._conv - DEBUG - Creating converter from 7 to 5
+[2025-09-24 01:04:48] 47  h5py._conv - DEBUG - Creating converter from 5 to 7
+[2025-09-24 01:04:48] 47  h5py._conv - DEBUG - Creating converter from 7 to 5
+[2025-09-24 01:04:48] 47  h5py._conv - DEBUG - Creating converter from 5 to 7
+[2025-09-24 01:04:50] 32  jax._src.path - DEBUG - etils.epath was not found. Using pathlib for file I/O.
+[2025-09-24 01:04:53] 219  sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+[2025-09-24 01:04:53] 227  sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-09-24 01:04:53] 1049  urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+[2025-09-24 01:04:54] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+[2025-09-24 01:04:54] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+[2025-09-24 01:04:55] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+[2025-09-24 01:04:56] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+[2025-09-24 01:04:56] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+[2025-09-24 01:04:56] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+[2025-09-24 01:04:56] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+[2025-09-24 01:04:56] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+[2025-09-24 01:04:57] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+[2025-09-24 01:04:57] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+[2025-09-24 01:04:57] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+[2025-09-24 01:04:58] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+[2025-09-24 01:04:58] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+[2025-09-24 01:04:58] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6857
+[2025-09-24 01:04:58] 158  logger - INFO - created embeddings
+[2025-09-24 01:04:59] 22  chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[2025-09-24 01:04:59] 359  chromadb.config - DEBUG - Starting component System
+[2025-09-24 01:04:59] 359  chromadb.config - DEBUG - Starting component Posthog
+[2025-09-24 01:04:59] 179  logger - INFO - vectorstore created to ./rag_database
+[2025-09-24 01:04:59] 1049  urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+[2025-09-24 01:05:01] 544  urllib3.connectionpool - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+[2025-09-24 01:05:20] 184  logger - INFO - added new chunks of len: 466
+[2025-09-24 01:05:20] 33  logger - INFO - Retriever instance created from scraped chunks.
+[2025-09-24 01:05:20] 208  logger - INFO - refined_chain_building
+[2025-09-24 01:05:21] 215  logger - INFO - loaded the model llama3.2:3b
+[2025-09-24 01:05:21] 238  logger - INFO - first initial chain
+[2025-09-24 01:05:21] 253  logger - INFO - refined llm chain
+[2025-09-24 01:05:21] 264  logger - INFO - docs chain created
+[2025-09-24 01:05:21] 35  logger - INFO - Built refined retrieval chain from scraped chunks.
+[2025-09-24 01:05:21] 84  logger - INFO - RAG system initialized and stored in session state.
+[2025-09-24 01:06:48] 72  logger - INFO - Application starting...
+[2025-09-24 01:06:48] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 01:06:48] 109  logger - INFO - User submitted a message: 'hi i am a farmer looking governement schemes, for agircultural purpose'
+[2025-09-24 01:06:49] 40  logger - INFO - Compiling and caching LangGraph.
+[2025-09-24 01:06:49] 175  logger - INFO - Starting graph compilation...
+[2025-09-24 01:06:49] 198  logger - INFO - Graph Compilation Complete...
+[2025-09-24 01:06:49] 123  logger - INFO - Invoking LangGraph with the current state.
+[2025-09-24 01:06:49] 31  logger - INFO - Starting Message Classifications...
+[2025-09-24 01:06:52] 1022  httpx._client - DEBUG - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+[2025-09-24 01:06:52] 50  logger - INFO - Message Classified as: agricultural
+[2025-09-24 01:06:52] 68  logger - INFO - Routing based on message type...
+[2025-09-24 01:06:52] 76  logger - INFO - Message type 'agricultural' detected. Routing to 'agricultural'.
+[2025-09-24 01:06:52] 88  logger - INFO - Executing agricultural agent...
+[2025-09-24 01:06:52] 1022  httpx._client - DEBUG - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+[2025-09-24 01:06:59] 125  logger - INFO - Agricultural agent execution complete.
+[2025-09-24 01:06:59] 130  logger - INFO - LangGraph execution complete. Response received.
+[2025-09-24 01:10:25] 72  logger - INFO - Application starting...
+[2025-09-24 01:10:25] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 01:10:25] 109  logger - INFO - User submitted a message: 'i want to know about winter crops for farming'
+[2025-09-24 01:10:26] 123  logger - INFO - Invoking LangGraph with the current state.
+[2025-09-24 01:10:26] 132  logger - ERROR - An error occurred during graph invocation: 21 validation errors for AIMessage
+content.str
+  Input should be a valid string [type=string_type, input_value=AIMessage(content="As a s...4d1b-a2d9-a5323e3c1138'), input_type=AIMessage]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].0.str
+  Input should be a valid string [type=string_type, input_value=('content', "As a sustain...nd future generations."), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].0.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('content', "As a sustain...nd future generations."), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].1.str
+  Input should be a valid string [type=string_type, input_value=('additional_kwargs', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].1.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('additional_kwargs', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].2.str
+  Input should be a valid string [type=string_type, input_value=('response_metadata', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].2.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('response_metadata', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].3.str
+  Input should be a valid string [type=string_type, input_value=('type', 'ai'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].3.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('type', 'ai'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].4.str
+  Input should be a valid string [type=string_type, input_value=('name', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].4.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('name', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].5.str
+  Input should be a valid string [type=string_type, input_value=('id', '317d714c-835b-4d1b-a2d9-a5323e3c1138'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].5.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('id', '317d714c-835b-4d1b-a2d9-a5323e3c1138'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].6.str
+  Input should be a valid string [type=string_type, input_value=('example', False), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].6.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('example', False), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].7.str
+  Input should be a valid string [type=string_type, input_value=('tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].7.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].8.str
+  Input should be a valid string [type=string_type, input_value=('invalid_tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].8.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('invalid_tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].9.str
+  Input should be a valid string [type=string_type, input_value=('usage_metadata', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].9.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('usage_metadata', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+[2025-09-24 01:10:43] 72  logger - INFO - Application starting...
+[2025-09-24 01:10:43] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 01:10:43] 109  logger - INFO - User submitted a message: 'i am a farmer looking for winter crops'
+[2025-09-24 01:10:44] 123  logger - INFO - Invoking LangGraph with the current state.
+[2025-09-24 01:10:44] 132  logger - ERROR - An error occurred during graph invocation: 21 validation errors for AIMessage
+content.str
+  Input should be a valid string [type=string_type, input_value=AIMessage(content="As a s...4d1b-a2d9-a5323e3c1138'), input_type=AIMessage]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].0.str
+  Input should be a valid string [type=string_type, input_value=('content', "As a sustain...nd future generations."), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].0.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('content', "As a sustain...nd future generations."), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].1.str
+  Input should be a valid string [type=string_type, input_value=('additional_kwargs', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].1.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('additional_kwargs', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].2.str
+  Input should be a valid string [type=string_type, input_value=('response_metadata', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].2.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('response_metadata', {}), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].3.str
+  Input should be a valid string [type=string_type, input_value=('type', 'ai'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].3.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('type', 'ai'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].4.str
+  Input should be a valid string [type=string_type, input_value=('name', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].4.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('name', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].5.str
+  Input should be a valid string [type=string_type, input_value=('id', '317d714c-835b-4d1b-a2d9-a5323e3c1138'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].5.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('id', '317d714c-835b-4d1b-a2d9-a5323e3c1138'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].6.str
+  Input should be a valid string [type=string_type, input_value=('example', False), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].6.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('example', False), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].7.str
+  Input should be a valid string [type=string_type, input_value=('tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].7.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].8.str
+  Input should be a valid string [type=string_type, input_value=('invalid_tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].8.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('invalid_tool_calls', []), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+content.list[union[str,dict[any,any]]].9.str
+  Input should be a valid string [type=string_type, input_value=('usage_metadata', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+content.list[union[str,dict[any,any]]].9.dict[any,any]
+  Input should be a valid dictionary [type=dict_type, input_value=('usage_metadata', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type

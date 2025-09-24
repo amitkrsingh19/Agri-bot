@@ -1,0 +1,24 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# RAG Database
+rag_database/
+rag_database/chroma.sqlite3
+# Logs
+logs/
+*.log
+
+data/
+# Scraped data files (if they are large)
+*.json
+*.pdf
+
+# Virtual environments
+.venv
+venv
+.env

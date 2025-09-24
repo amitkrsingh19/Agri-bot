@@ -1,0 +1,74 @@
+[2025-09-24 00:39:44] 72  logger - INFO - Application starting...
+[2025-09-24 00:39:45] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 00:39:45] 80  logger - INFO - Session initialized with welcome message.
+[2025-09-24 00:39:45] 9  logger - INFO - Attempting to set up RAG system...
+[2025-09-24 00:39:46] 65  logger - INFO - text splitted using tiktoken
+[2025-09-24 00:39:53] 32  tensorflow - DEBUG - Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+[2025-09-24 00:39:53] 47  h5py._conv - DEBUG - Creating converter from 7 to 5
+[2025-09-24 00:39:53] 47  h5py._conv - DEBUG - Creating converter from 5 to 7
+[2025-09-24 00:39:53] 47  h5py._conv - DEBUG - Creating converter from 7 to 5
+[2025-09-24 00:39:53] 47  h5py._conv - DEBUG - Creating converter from 5 to 7
+[2025-09-24 00:39:55] 32  jax._src.path - DEBUG - etils.epath was not found. Using pathlib for file I/O.
+[2025-09-24 00:39:59] 219  sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+[2025-09-24 00:39:59] 227  sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+[2025-09-24 00:39:59] 1049  urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+[2025-09-24 00:40:00] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+[2025-09-24 00:40:00] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+[2025-09-24 00:40:01] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+[2025-09-24 00:40:01] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+[2025-09-24 00:40:01] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+[2025-09-24 00:40:01] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+[2025-09-24 00:40:01] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+[2025-09-24 00:40:01] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+[2025-09-24 00:40:02] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+[2025-09-24 00:40:02] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+[2025-09-24 00:40:03] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+[2025-09-24 00:40:03] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+[2025-09-24 00:40:03] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+[2025-09-24 00:40:04] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+[2025-09-24 00:40:04] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+[2025-09-24 00:40:04] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+[2025-09-24 00:40:04] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+[2025-09-24 00:40:04] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+[2025-09-24 00:40:05] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+[2025-09-24 00:40:05] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+[2025-09-24 00:40:05] 544  urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6857
+[2025-09-24 00:40:05] 158  logger - INFO - created embeddings
+[2025-09-24 00:40:06] 22  chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[2025-09-24 00:40:06] 359  chromadb.config - DEBUG - Starting component System
+[2025-09-24 00:40:06] 359  chromadb.config - DEBUG - Starting component Posthog
+[2025-09-24 00:40:06] 179  logger - INFO - vectorstore created to ./rag_database
+[2025-09-24 00:40:07] 1049  urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): us.i.posthog.com:443
+[2025-09-24 00:40:08] 544  urllib3.connectionpool - DEBUG - https://us.i.posthog.com:443 "POST /batch/ HTTP/1.1" 200 15
+[2025-09-24 00:40:28] 184  logger - INFO - added new chunks of len: 466
+[2025-09-24 00:40:28] 33  logger - INFO - Retriever instance created from scraped chunks.
+[2025-09-24 00:40:28] 208  logger - INFO - refined_chain_building
+[2025-09-24 00:40:29] 215  logger - INFO - loaded the model llama3.2:3b
+[2025-09-24 00:40:29] 238  logger - INFO - first initial chain
+[2025-09-24 00:40:29] 253  logger - INFO - refined llm chain
+[2025-09-24 00:40:29] 264  logger - INFO - docs chain created
+[2025-09-24 00:40:29] 35  logger - INFO - Built refined retrieval chain from scraped chunks.
+[2025-09-24 00:40:29] 84  logger - INFO - RAG system initialized and stored in session state.
+[2025-09-24 00:40:46] 72  logger - INFO - Application starting...
+[2025-09-24 00:40:46] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 00:40:46] 109  logger - INFO - User submitted a message: 'i am a farmer suggest some winter crops?'
+[2025-09-24 00:40:47] 40  logger - INFO - Compiling and caching LangGraph.
+[2025-09-24 00:40:47] 156  logger - INFO - Starting graph compilation...
+[2025-09-24 00:40:47] 179  logger - INFO - Graph Compilation Complete...
+[2025-09-24 00:40:47] 123  logger - INFO - Invoking LangGraph with the current state.
+[2025-09-24 00:40:47] 31  logger - INFO - Starting Message Classifications...
+[2025-09-24 00:40:50] 1022  httpx._client - DEBUG - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+[2025-09-24 00:40:50] 50  logger - INFO - Message Classified as: agricultural
+[2025-09-24 00:40:50] 132  logger - ERROR - An error occurred during graph invocation: Expected dict, got [{'message_types': 'agricultural', 'question': 'i am a farmer suggest some winter crops?'}]
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_GRAPH_NODE_RETURN_VALUE
+[2025-09-24 00:42:19] 72  logger - INFO - Application starting...
+[2025-09-24 00:42:19] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 00:42:21] 72  logger - INFO - Application starting...
+[2025-09-24 00:42:21] 50  logger - INFO - UI page config and styles loaded.
+[2025-09-24 00:42:21] 109  logger - INFO - User submitted a message: 'i am a farmer suggest some winter crops?'
+[2025-09-24 00:42:22] 123  logger - INFO - Invoking LangGraph with the current state.
+[2025-09-24 00:42:22] 31  logger - INFO - Starting Message Classifications...
+[2025-09-24 00:42:23] 1022  httpx._client - DEBUG - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+[2025-09-24 00:42:23] 50  logger - INFO - Message Classified as: agricultural
+[2025-09-24 00:42:23] 132  logger - ERROR - An error occurred during graph invocation: Expected dict, got [{'message_types': 'agricultural', 'question': 'i am a farmer suggest some winter crops?'}]
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_GRAPH_NODE_RETURN_VALUE
