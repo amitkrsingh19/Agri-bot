@@ -16,21 +16,11 @@ from pypdf import PdfReader
 import os
 from logger import logger
 from langchain_google_genai import ChatGoogleGenerativeAI
-from pydantic import SecretStr
-from dotenv import load_dotenv
-
-#load .env file
-load_dotenv()
-
-# Get key from environment
-api_key = os.getenv("GOOGLE_API_KEY")
-
-if not api_key:
-    raise ValueError("❌ GOOGLE_API_KEY not set. Please add it to .env")
+from config import GOOGLE_API_KEY
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
-    api_key=SecretStr(api_key)
+    api_key=GOOGLE_API_KEY
 )
 
 # Ensure an identifying USER_AGENT is set for web requests (helps with polite scraping and avoids warnings)
