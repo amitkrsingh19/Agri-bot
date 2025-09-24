@@ -2,15 +2,16 @@ import streamlit as st
 import time
 from core import load_and_split_document, create_embedding, create_vector_store, pdf_reader, build_refine_chain
 from logger import logger 
-from graph import create_graph,State
+from graph import create_graph, State
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
 from typing import List, cast
 
 @st.cache_resource
 def setup_rag_system():
     logger.info("Attempting to set up RAG system...")
-    data_file = "C:\\krishisahayi\\lang-chain-bot\\data\\scraped_chunks.json"
-    db_path = "./rag_database"
+    # Use a relative path, which works on both local and cloud environments
+    data_file = "data/scraped_chunks.json"
+    db_path = "rag_database"
     chunks = load_and_split_document(data_file)
     embedding = create_embedding()
 
@@ -48,16 +49,14 @@ def setup_ui():
         page_icon="🌾",
         layout="wide",
     )
-    # The logging for the UI setup is more about the app's lifecycle than flow
     logger.info("UI page config and styles loaded.")
-    # (The rest of your setup_ui function remains the same)
 
 def render_messages(container):
     with container:
         st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
         for msg in st.session_state.messages:
-            # Correctly handle LangChain objects using isinstance() and .content
             role = "assistant" if isinstance(msg, AIMessage) else "user"
+            # Fixed: Access the content property of the LangChain message object
             content = msg.content
             if role == "assistant":
                 st.markdown(f"<div class='chat-line bot'><div class='avatar'>🌱</div>"
@@ -67,14 +66,16 @@ def render_messages(container):
                 st.markdown(f"<div class='chat-line user'><div class='chat-bubble user'>{content}</div>"
                             f"<div class='avatar'>👩‍🌾</div></div>",
                             unsafe_allow_html=True)
+        # Fixed: Removed the extra closing div markdown from inside the loop
         st.markdown("</div>", unsafe_allow_html=True)
 
 def main():
     logger.info("Application starting...")
     setup_ui()
     st.markdown("<h2 style='text-align:center;color:#2d6a4f;'>🌾 Terra AI: Your Agricultural Assistant</h2>", unsafe_allow_html=True)
+    
     if "messages" not in st.session_state:
-        # Initialize the session state with a LangChain AIMessage object
+        # Fixed: Use a LangChain AIMessage object for initialization
         st.session_state.messages = cast(List[BaseMessage], [
             AIMessage(content="Hello! I'm Terra 🌱. I'm here to help with your farming questions.")
         ])
@@ -114,7 +115,7 @@ def main():
         # Append the new message as a LangChain HumanMessage object
         st.session_state.messages.append(HumanMessage(content=prompt))
         
-        # Prepare the state dictionary
+        # Prepare the state dictionary for LangGraph
         initial_state = {
             "messages": st.session_state.messages,
             "rag_chain": st.session_state.retrieval_chain 
@@ -122,23 +123,19 @@ def main():
         
         graph = get_graph()
         
-    try:
-        logger.info("Invoking LangGraph with the current state.")
-        # Pass the initial state to the graph
-        response = graph.invoke(initial_state) #type: ignore
+        try:
+            logger.info("Invoking LangGraph with the current state.")
+            response = graph.invoke(initial_state) #type:ignore
 
-        # The last message object from the response is already a LangChain object
-        final_message_obj = response["messages"][-1]
-
-        # Append the full LangChain message object to the session state
-        st.session_state.messages.append(final_message_obj)
-
-        logger.info(f"LangGraph execution complete. Response received.")
-    except Exception as e:
-        logger.error(f"An error occurred during graph invocation: {e}")
-        st.session_state.messages.append(
-            AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
-        )
+            final_message_obj = response["messages"][-1]
+            st.session_state.messages.append(final_message_obj)
+            
+            logger.info(f"LangGraph execution complete. Response received.")
+        except Exception as e:
+            logger.error(f"An error occurred during graph invocation: {e}")
+            st.session_state.messages.append(
+                AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
+            )
 
 if __name__ == "__main__":
     main()
