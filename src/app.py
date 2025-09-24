@@ -6,6 +6,7 @@ from graph import create_graph, State
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
 from typing import List, cast
 
+
 @st.cache_resource
 def setup_rag_system():
     logger.info("Attempting to set up RAG system...")
@@ -126,8 +127,8 @@ def main():
         try:
             logger.info("Invoking LangGraph with the current state.")
             response = graph.invoke(initial_state) #type:ignore
-
             final_message_obj = response["messages"][-1]
+            logger.info(f"final_message : {final_message_obj}")
             st.session_state.messages.append(final_message_obj)
             
             logger.info(f"LangGraph execution complete. Response received.")

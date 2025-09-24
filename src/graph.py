@@ -5,9 +5,10 @@ from pydantic import Field, BaseModel
 from langgraph.graph.message import add_messages
 from typing_extensions import TypedDict
 from logger import logger
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
+llm = ChatGoogleGenerativeAI(model="gemini-pro")
 
-llm = ChatOllama(model="llama3.2:3b")
 
 class State(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]
