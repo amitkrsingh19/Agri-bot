@@ -3,6 +3,8 @@ import time
 from core import load_and_split_document, create_embedding, create_vector_store, pdf_reader, build_refine_chain
 from logger import logger 
 from graph import create_graph,State
+from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
+from typing import List, cast
 
 @st.cache_resource
 def setup_rag_system():
@@ -56,8 +58,8 @@ def render_messages(container):
     with container:
         st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
         for msg in st.session_state.messages:
-            role = msg["role"]
-            content = msg["content"]
+            role = "assistant" if isinstance(msg, AIMessage) else "user"
+            content = msg.content
             if role == "assistant":
                 st.markdown(f"<div class='chat-line bot'><div class='avatar'>🌱</div>"
                             f"<div class='chat-bubble bot'>{content}</div></div>",
@@ -72,11 +74,12 @@ def main():
     logger.info("Application starting...")
     setup_ui()
     st.markdown("<h2 style='text-align:center;color:#2d6a4f;'>🌾 Terra AI: Your Agricultural Assistant</h2>", unsafe_allow_html=True)
-    
     if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "assistant", "content": "Hello! I'm Terra 🌱. I'm here to help with your farming questions."}
-        ]
+         # Use an AIMessage object for the initial message
+        st.session_state.messages = cast(List[BaseMessage], [
+        AIMessage(content="Hello! I'm Terra 🌱. I'm here to help with your farming questions.")
+        ])
+        logger.info("Session initialized with welcome message.")
         logger.info("Session initialized with welcome message.")
 
     if "retrieval_chain" not in st.session_state:
@@ -110,7 +113,7 @@ def main():
         with st.spinner("Thinking... 🌾"):
             time.sleep(1) 
         
-        st.session_state.messages.append({"role": "user", "content": prompt})
+        st.session_state.messages.append(HumanMessage(content=prompt))
         
         initial_state = {
             "messages": st.session_state.messages,
@@ -135,7 +138,7 @@ def main():
         except Exception as e:
             logger.error(f"An error occurred during graph invocation: {e}")
             st.session_state.messages.append(
-                {"role": "assistant", "content": "I'm sorry, an error occurred while processing your request. Please try again."}
+                AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
             )
     render_messages(chat_container)
 
