@@ -16,10 +16,22 @@ from pypdf import PdfReader
 import os
 from logger import logger
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
+from pydantic import SecretStr
+from dotenv import load_dotenv
 
-llm = ChatGoogleGenerativeAI(model="gemini-pro")
+#load .env file
+load_dotenv()
 
+# Get key from environment
+api_key = os.getenv("GOOGLE_API_KEY")
+
+if not api_key:
+    raise ValueError("❌ GOOGLE_API_KEY not set. Please add it to .env")
+
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.0-flash",
+    api_key=SecretStr(api_key)
+)
 
 # Ensure an identifying USER_AGENT is set for web requests (helps with polite scraping and avoids warnings)
 # You can override this in your environment if you prefer a different identifier.
@@ -149,7 +161,7 @@ def web_scrapper(url:str):
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=1000, chunk_overlap=100, add_start_index=True)
     all_splits = text_splitter.split_documents(docs)
     # write a simple serializable structure (page_content + metadata)
-    with open("C:\krishisahayi\lang-chain-bot\data\scraped_chunks.json", "a", encoding="utf-8") as f:
+    with open("lang-chain-bot\data\scraped_chunks.json", "a", encoding="utf-8") as f:
         json.dump([doc.model_dump() for doc in all_splits], f, ensure_ascii=False, indent=2)
     logger.info(f"successfully scraped document: {len(docs)} and saved it")
     return "successfully scraped and saved it"

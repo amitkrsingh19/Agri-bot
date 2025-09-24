@@ -1,5 +1,6 @@
 from langchain_ollama.chat_models import ChatOllama
 from typing import Annotated, Literal, Any,List
+from pydantic import SecretStr
 from langgraph.graph import START, END, StateGraph
 from pydantic import Field, BaseModel
 from langgraph.graph.message import add_messages
@@ -7,8 +8,22 @@ from typing_extensions import TypedDict
 from logger import logger
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
-llm = ChatGoogleGenerativeAI(model="gemini-pro")
+import os
+import google.generativeai as genai
+from dotenv import load_dotenv
 
+load_dotenv()
+
+# Get key from environment
+api_key = os.getenv("GOOGLE_API_KEY")
+
+if not api_key:
+    raise ValueError("❌ GOOGLE_API_KEY not set. Please add it to .env")
+
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.0-flash",
+    api_key=SecretStr(api_key)
+)
 
 class State(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]
