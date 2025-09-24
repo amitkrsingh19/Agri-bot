@@ -123,7 +123,8 @@ def main():
             logger.info("Invoking LangGraph with the current state.")
             state_input = State(**initial_state)
             response = graph.invoke(state_input)
-            answer = response["messages"][-1].content
+            last_message_obj = response["messages"][-1]
+            answer = last_message_obj.content
             st.session_state.messages.append(
                 {"role": "assistant", "content": answer}
             )
