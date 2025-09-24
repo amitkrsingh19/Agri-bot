@@ -15,11 +15,15 @@ from urllib.parse import urlparse
 from pypdf import PdfReader
 import os
 from logger import logger
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro")
+
 
 # Ensure an identifying USER_AGENT is set for web requests (helps with polite scraping and avoids warnings)
 # You can override this in your environment if you prefer a different identifier.
 os.environ.setdefault("USER_AGENT", "TerraAI/1.0 (+https://example.com)")
-from langchain_ollama import OllamaLLM
 
 file_path = "C:\\krishisahayi\\lang-chain-bot\\data\\scraped_chunks.json"
 SCRAPED_FILE = "scraped.json"
@@ -197,7 +201,7 @@ def create_vector_store(chunks:list[Document],embedding,
         except Exception as e:
             logger.error(f"error persisiting {e}")
         return vectorstore
-    
+
 def build_refine_chain(retriever):
     # Prompt to extract raw text from each document
     # The retrieval/refine helpers expect the document variable to be named 'context'
@@ -210,8 +214,6 @@ def build_refine_chain(retriever):
     document_variable_name = "context"
     initial_response_name = "prev_response"
 
-    # LLM
-    llm = OllamaLLM(model="llama3.2:3b")
     logger.info("loaded the model llama3.2:3b")
     # Initial summarization prompt — produce concise, actionable, safety-aware farming guidance
     initial_prompt = PromptTemplate.from_template("""
