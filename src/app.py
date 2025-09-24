@@ -134,9 +134,11 @@ def main():
             logger.info(f"LangGraph execution complete. Response received.")
         except Exception as e:
             logger.error(f"An error occurred during graph invocation: {e}")
-            st.session_state.messages.append(
-                AIMessage(content="I'm sorry, an error occurred while processing your request. Please try again.")
+            # FIX: Return a simple, pre-written message here instead of a generic error.
+            fallback_message = AIMessage(
+                content="The main AI is currently unavailable, but I'm working on it! Thanks for trying out my app."
             )
+            st.session_state.messages.append(fallback_message)
     render_messages(chat_container)
 if __name__ == "__main__":
     main()
