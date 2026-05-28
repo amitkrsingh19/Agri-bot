@@ -19,6 +19,6 @@ data/
 *.pdf
 
 # Virtual environments
-.venv
 venv
-.env
+*.env
+.env.local
