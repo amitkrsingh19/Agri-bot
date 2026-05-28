@@ -5,6 +5,7 @@ from operator import add
 from typing_extensions import TypedDict
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, AIMessage, BaseMessage, SystemMessage
+import os
 
 from .logger import logger
 from .config import GOOGLE_API_KEY
@@ -26,7 +27,7 @@ class MessageClassifier(BaseModel):
     )
 
 
-# --- LLM Setup ---
+# --- Gemini+2 Setup ---
 """
 classifier_llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=GOOGLE_API_KEY, temperature=0.0)
 generation_llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=GOOGLE_API_KEY, temperature=0.7)
@@ -36,12 +37,14 @@ from langchain_ollama import ChatOllama
 
 # By default, ChatOllama looks for the local server running on http://localhost:11434
 classifier_llm = ChatOllama(
-    model="llama3.2:3b", 
+    model=os.getenv("OLLAMA_MODEL", "llama3.2:3b"),
+    base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
     temperature=0.0
 )
 
 generation_llm = ChatOllama(
-    model="llama3.2:3b", 
+    model=os.getenv("OLLAMA_MODEL", "llama3.2:3b"),
+    base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
     temperature=0.7
 )
 
