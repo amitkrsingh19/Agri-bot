@@ -1,0 +1,69 @@
+services:
+
+  # --- Chroma vector database ---
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: agribot-chroma
+    ports:
+      - "8002:8000"           # expose only for debugging; api talks internally
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # --- FastAPI backend ---
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agribot-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - hf_cache:/home/appuser/.cache/huggingface   # persist embedding model
+      - ./data:/app/data                             # persist scraped JSON
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      # Ollama is on the host machine — this is how containers reach it
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+    depends_on:
+      chromadb:
+        condition: service_healthy
+    # Lets the container reach Ollama on host (Linux needs this; Mac/Win have it built-in)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # --- Streamlit UI ---
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: agribot-ui
+    ports:
+      - "8501:8501"
+    environment:
+      # UI talks to api service by container name, not localhost
+      - FASTAPI_URL=http://api:8000/ask
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  chroma_data:        # persists your vector index
+  hf_cache:           # persists the HuggingFace embedding model weights
