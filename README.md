@@ -10,6 +10,12 @@ Most agricultural chatbots give generic advice. Kerala has specific crop cycles,
 
 ---
 
+---
+
+![Kerala AgriBot answering a crop advisory question](/chatbot-screenshot.png)
+
+---
+
 ## How it works
 
 When you send a message, a classifier routes it to one of three agents:
@@ -47,6 +53,7 @@ FastAPI JSON response
 | Retrieval | LangChain + Chroma |
 | Embeddings | `BAAI/bge-small-en-v1.5` (local, no API cost) |
 | LLM | Gemini 2.0 Flash |
+| Local LLM | llama3.2:3b |
 | API | FastAPI |
 | UI | Streamlit |
 | Containerization | Docker |
@@ -125,8 +132,9 @@ kerala-agribot/
 │   ├── chain.py         # RAG chain with query rewriting
 │   ├── ingest.py        # PDF ingestion + vector store
 │   ├── rag_service.py   # Cached singletons, ask_rag()
-│   ├── prompts.py       # Prompt templates
-│   └── schemas.py       # Pydantic request/response models
+│   ├── logger.py        # Logging
+│   ├── config.py        # API key configs
+│   └── scrape.py        # scarping logics       
 ├── data/
 │   └── raw/             # Source PDFs (KAU, ICAR)
 ├── rag_database/        # Chroma vector store (git-ignored)
