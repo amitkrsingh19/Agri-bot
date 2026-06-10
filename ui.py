@@ -139,8 +139,7 @@ if prompt := st.chat_input("Ask about crops, pests, or schemes..."):
             try:
                 response = requests.post(
                     FASTAPI_URL,
-                    json={"message": prompt, "history": clean_history},
-                    timeout=30
+                    json={"message": prompt, "history": clean_history}
                 )
                 response.raise_for_status()
                 data = response.json()

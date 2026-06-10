@@ -15,6 +15,7 @@ logs/
 
 data/
 # Scraped data files (if they are large)
+*scraped_chunks.json
 *.json
 *.pdf
 

@@ -10,11 +10,13 @@ Most agricultural chatbots give generic advice. Kerala has specific crop cycles,
 
 ---
 
----
-
+## Kerala AgriBot answering a crop advisory question
 ![Kerala AgriBot answering a crop advisory question](/chatbot-screenshot.png)
 
----
+### Sources
+![Sources](/chatbot-screenshot.png)
+
+
 
 ## How it works
 

@@ -1,0 +1,6 @@
+question,answer,ground_truth,num_contexts
+What is the recommended fertilizer dose for rice in Kerala?,"Based on the current agricultural context of Kerala, India (June-September season), and considering ","For rice in Kerala, apply 60kg nitrogen, 30kg phosphorus, and 30kg potassium per hectare as per KAU recommendations.",4
+How do I identify leaf blight in paddy?,"In paddy crops during the June-September season in Kerala, India, leaf blight symptoms can manifest ",Leaf blight in paddy shows water-soaked lesions on leaf edges that turn yellow-brown and spread inward.,4
+What government schemes are available for coconut farmers in Kerala?,"**Kerala Coconut Farming Subsidies and Government Schemes**
+
+The Government of Kerala offers several",The Coconut Development Board offers replanting subsidy and production incentive schemes for Kerala coconut farmers.,4
