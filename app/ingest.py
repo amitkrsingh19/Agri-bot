@@ -87,35 +87,57 @@ def load_and_split_document(file_path: str = str(SCRAPED_JSON_PATH)):
         return []
     
     # Split the loaded documents into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=400,chunk_overlap=80,separators=["\n\n", "\n", ".", " "])
 
     # split_documents expects a list of Document objects, not raw json dicts
     chunks = text_splitter.split_documents(docs)
     logger.info(f"Loaded and split into {len(chunks)} chunks")
     return chunks
 
-def pdf_reader(pdf):
-    pdf_name = pdf.name if hasattr(pdf, "name") else str(pdf)
+# filtering the json from useless intros
+MINIMUM_CONTENT_WORDS = 30
+BOILERPLATE_PHRASES = [
+    "about the course", "objectives of the course",
+    "table of contents", "index", "foreword", "preface"
+]
+
+def is_useful_page(text: str) -> bool:
+    word_count = len(text.split())
+    if word_count < MINIMUM_CONTENT_WORDS:
+        return False
+    text_lower = text.lower()
+    if any(phrase in text_lower for phrase in BOILERPLATE_PHRASES):
+        return False
+    return True
+
+
+def pdf_reader(pdf,filename):
+    pdf_name = filename if isinstance(filename,str) else str(pdf)
     reader = PdfReader(pdf)
     
     new_data = []
     for i, page in enumerate(reader.pages):
         text = page.extract_text() or ""   # just this page, nothing else
         
-        if text.strip():
-            new_data.append({
+        if text.strip() and is_useful_page(text):
+            new_data.append ({
                 "page_content": text,
-                "metadata": {"source": pdf_name, "page": i + 1}
+                "metadata": {
+                    "source": pdf_name, 
+                    "page": i + 1,
+                    "type": "pdf"
+                }
             })
     
     if not new_data:
         logger.warning(f"No extractable text found in {pdf_name} — scanned PDF?")
-        return
+        return []
     
     update_scraped_data(new_data)
     logger.info(f"Saved {len(new_data)} raw pages from {pdf_name}")
+    return new_data
 
-def ingest_pdf(file) -> str:
+def ingest_pdf(file,filename) -> str:
     """Ingest a PDF, update persisted chunks, and rebuild retrieval chain."""
-    pdf_reader(file)
+    pdf_reader(file,filename)
     return "Knowledge base updated with uploaded PDF."
