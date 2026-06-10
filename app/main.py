@@ -43,7 +43,7 @@ async def ask(query: QueryRequest):
 async def upload_pdf(file: UploadFile = File(...)) -> Dict[str, Any]:
     """Upload a PDF to enrich the knowledge base."""
     try:
-        response = ingest_pdf(file.file)
+        response = ingest_pdf(file.file,file.filename)
         # rebuild the retrieval chain so new content is searchable immediately
         reload_retrieval_chain()
         return {"status": "ok", "message": response}

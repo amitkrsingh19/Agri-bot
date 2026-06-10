@@ -30,7 +30,6 @@ def get_season_hint() -> str:
         season, crops = KERALA_SEASON_CONTEXT["summer"]
     return f"Current Kerala season: {season}. Likely crops: {', '.join(crops)}."
 
-
 """
 os.environ.setdefault("USER_AGENT", "TerraAI/1.0 (+https://example.com)")
 # Initialize the LLM interface (Gemini via Google GenAI)
